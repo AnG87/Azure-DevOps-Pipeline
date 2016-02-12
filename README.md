@@ -10,3 +10,6 @@ Aquaman
 
 
 Iron-Man Spider-Man Hulk Thor Captain America 
+
+
+Wolverine Cyclops 
