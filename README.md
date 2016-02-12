@@ -7,3 +7,6 @@ Wonder Woman
 Green Lantern
 Flash
 Aquaman
+
+
+Iron-Man Spider-Man Hulk Thor Captain America 
