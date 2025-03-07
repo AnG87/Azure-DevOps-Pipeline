@@ -1,0 +1,26 @@
+- stage: Deploy_VM
+  displayName: 'Deploy Virtual Machine'
+  jobs:
+  - job: vm_deployment
+    displayName: 'VM Deployment'
+    variables:
+    - name: solution.name
+      value: lz-vms
+    - name: solution.version
+      value: 7.*  # Adjust the version as needed
+    - name: lz.parameters.file.path
+      value: /$(lz.deployment.subscription.name)/lz-vms.bicepparam
+    timeoutInMinutes: 30  # Adjust timeout if needed
+       
+    steps: 
+    - template: download-package.yml@pipeline-templates
+      parameters:
+        solutionName: lz-deployment-script
+        solutionVersion: $(script.version)
+    - template: download-package.yml@pipeline-templates
+      parameters:
+        solutionName: $(solution.name)
+        solutionVersion: $(solution.version)
+    - template: run-modern-deployment-wif.yml@pipeline-templates
+      parameters:
+        serviceConnectionName: $(AdoServiceConnectionName)
